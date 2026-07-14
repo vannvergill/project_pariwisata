@@ -66,7 +66,47 @@
                 f_acc: "Accommodation",
                 f_faq: "FAQ",
                 copy: "&copy; 2026 Visit Lampung. All rights reserved.",
-                scroll: "Scroll"
+                scroll: "Scroll",
+                reg_1_n: "Bandar Lampung",
+                reg_1_d: "Modern entertainment & culinary center",
+                reg_2_n: "Metro City",
+                reg_2_d: "Beautiful education city",
+                reg_3_n: "South Lampung",
+                reg_3_d: "Gateway & beach tourism",
+                reg_4_n: "Pesawaran",
+                reg_4_d: "Exotic marine tourism paradise",
+                reg_5_n: "Tanggamus",
+                reg_5_d: "Wild dolphins & dramatic nature",
+                reg_6_n: "West Pesisir",
+                reg_6_d: "World-class surfing area",
+                reg_7_n: "West Lampung",
+                reg_7_d: "Volcanic mountains & coffee",
+                reg_8_n: "East Lampung",
+                reg_8_d: "Wildlife conservation & prehistory",
+                reg_9_n: "Central Lampung",
+                reg_9_d: "Dam & religious tourism",
+                reg_10_n: "North Lampung",
+                reg_10_d: "Hidden waterfall potential",
+                reg_11_n: "Way Kanan",
+                reg_11_d: "Farmers' land & waterfall tourism",
+                reg_12_n: "Mesuji",
+                reg_12_d: "Large river waters area",
+                reg_13_n: "Tulang Bawang",
+                reg_13_d: "Past kingdom history",
+                reg_14_n: "West Tulang Bawang",
+                reg_14_d: "Modern & philosophical architecture",
+                reg_15_n: "Pringsewu",
+                reg_15_d: "Creative agrotourism & hills",
+                leg_title: "Legend",
+                leg_sub: "(Click to filter)",
+                leg_beach: "Beaches & Islands",
+                leg_mount: "Mountains",
+                leg_umkm: "SME / Culinary",
+                leg_coffee: "Coffee Shop",
+                leg_other: "Other Destinations",
+                news_1_date: "10 July 2026",
+                news_2_date: "05 July 2026",
+                news_3_date: "28 June 2026"
             },
             id: {
                 page_title: "Kunjungi Lampung — Harta Karun Sumatera",
@@ -134,7 +174,47 @@
                 f_acc: "Akomodasi",
                 f_faq: "FAQ",
                 copy: "&copy; 2026 Kunjungi Lampung. Hak cipta dilindungi.",
-                scroll: "Gulir"
+                scroll: "Gulir",
+                reg_1_n: "Bandar Lampung",
+                reg_1_d: "Pusat hiburan modern & kuliner",
+                reg_2_n: "Kota Metro",
+                reg_2_d: "Kota pendidikan yang asri",
+                reg_3_n: "Lampung Selatan",
+                reg_3_d: "Pintu gerbang & wisata pantai",
+                reg_4_n: "Pesawaran",
+                reg_4_d: "Surga wisata bahari eksotis",
+                reg_5_n: "Tanggamus",
+                reg_5_d: "Lumba-lumba liar & alam dramatis",
+                reg_6_n: "Pesisir Barat",
+                reg_6_d: "Kawasan selancar kelas dunia",
+                reg_7_n: "Lampung Barat",
+                reg_7_d: "Pegunungan vulkanik & kopi",
+                reg_8_n: "Lampung Timur",
+                reg_8_d: "Konservasi satwa & prasejarah",
+                reg_9_n: "Lampung Tengah",
+                reg_9_d: "Wisata bendungan & religi",
+                reg_10_n: "Lampung Utara",
+                reg_10_d: "Potensi air terjun tersembunyi",
+                reg_11_n: "Way Kanan",
+                reg_11_d: "Bumi petani & wisata air terjun",
+                reg_12_n: "Mesuji",
+                reg_12_d: "Wilayah perairan sungai besar",
+                reg_13_n: "Tulang Bawang",
+                reg_13_d: "Sejarah kerajaan masa lalu",
+                reg_14_n: "Tulang Bawang Barat",
+                reg_14_d: "Arsitektur modern & filosofis",
+                reg_15_n: "Pringsewu",
+                reg_15_d: "Agrowisata kreatif & perbukitan",
+                leg_title: "Keterangan",
+                leg_sub: "(Klik untuk filter)",
+                leg_beach: "Pantai & Pulau",
+                leg_mount: "Gunung",
+                leg_umkm: "UMKM / Kuliner",
+                leg_coffee: "Coffee Shop",
+                leg_other: "Destinasi Lainnya",
+                news_1_date: "10 Juli 2026",
+                news_2_date: "05 Juli 2026",
+                news_3_date: "28 Juni 2026"
             }
         };
 
@@ -595,14 +675,20 @@
             div.style.color = '#333';
             div.style.fontFamily = "'DM Sans', sans-serif";
 
-            div.innerHTML += '<h4 style="margin:0 0 8px 0; font-family:\'Cormorant Garamond\', serif; font-size:1.2rem;">Keterangan <small style="font-size: 0.75rem; color: #666; font-family: \'DM Sans\', sans-serif; font-weight: normal; display: block; line-height: 1.2; margin-top: 2px;">(Klik untuk filter)</small></h4>';
-            div.innerHTML += '<div class="legend-item" data-category="pantai" onclick="filterMap(\'pantai\')" style="display:flex; align-items:center; margin-bottom:4px; cursor:pointer; transition: opacity 0.3s;"><i style="background:#3498db; width:14px; height:14px; display:inline-block; border-radius:50%; margin-right:8px;"></i> Pantai & Pulau</div>';
-            div.innerHTML += '<div class="legend-item" data-category="gunung" onclick="filterMap(\'gunung\')" style="display:flex; align-items:center; margin-bottom:4px; cursor:pointer; transition: opacity 0.3s;"><i style="background:#2ecc71; width:14px; height:14px; display:inline-block; border-radius:50%; margin-right:8px;"></i> Gunung</div>';
-            div.innerHTML += '<div class="legend-item" data-category="umkm" onclick="filterMap(\'umkm\')" style="display:flex; align-items:center; margin-bottom:4px; cursor:pointer; transition: opacity 0.3s;"><i style="background:#e67e22; width:14px; height:14px; display:inline-block; border-radius:50%; margin-right:8px;"></i> UMKM / Kuliner</div>';
-            div.innerHTML += '<div class="legend-item" data-category="coffee" onclick="filterMap(\'coffee\')" style="display:flex; align-items:center; margin-bottom:4px; cursor:pointer; transition: opacity 0.3s;"><i style="background:#8e44ad; width:14px; height:14px; display:inline-block; border-radius:50%; margin-right:8px;"></i> Coffee Shop</div>';
-            div.innerHTML += '<div class="legend-item" data-category="other" onclick="filterMap(\'other\')" style="display:flex; align-items:center; cursor:pointer; transition: opacity 0.3s;"><i style="background:#e74c3c; width:14px; height:14px; display:inline-block; border-radius:50%; margin-right:8px;"></i> Destinasi Lainnya</div>';
+            div.innerHTML += '<h4 style="margin:0 0 8px 0; font-family:\'Cormorant Garamond\', serif; font-size:1.2rem;"><span data-i18n="leg_title">Keterangan</span> <small data-i18n="leg_sub" style="font-size: 0.75rem; color: #666; font-family: \'DM Sans\', sans-serif; font-weight: normal; display: block; line-height: 1.2; margin-top: 2px;">(Klik untuk filter)</small></h4>';
+            div.innerHTML += '<div class="legend-item" data-category="pantai" onclick="filterMap(\'pantai\')" style="display:flex; align-items:center; margin-bottom:4px; cursor:pointer; transition: opacity 0.3s;"><i style="background:#3498db; width:14px; height:14px; display:inline-block; border-radius:50%; margin-right:8px;"></i> <span data-i18n="leg_beach">Pantai & Pulau</span></div>';
+            div.innerHTML += '<div class="legend-item" data-category="gunung" onclick="filterMap(\'gunung\')" style="display:flex; align-items:center; margin-bottom:4px; cursor:pointer; transition: opacity 0.3s;"><i style="background:#2ecc71; width:14px; height:14px; display:inline-block; border-radius:50%; margin-right:8px;"></i> <span data-i18n="leg_mount">Gunung</span></div>';
+            div.innerHTML += '<div class="legend-item" data-category="umkm" onclick="filterMap(\'umkm\')" style="display:flex; align-items:center; margin-bottom:4px; cursor:pointer; transition: opacity 0.3s;"><i style="background:#e67e22; width:14px; height:14px; display:inline-block; border-radius:50%; margin-right:8px;"></i> <span data-i18n="leg_umkm">UMKM / Kuliner</span></div>';
+            div.innerHTML += '<div class="legend-item" data-category="coffee" onclick="filterMap(\'coffee\')" style="display:flex; align-items:center; margin-bottom:4px; cursor:pointer; transition: opacity 0.3s;"><i style="background:#8e44ad; width:14px; height:14px; display:inline-block; border-radius:50%; margin-right:8px;"></i> <span data-i18n="leg_coffee">Coffee Shop</span></div>';
+            div.innerHTML += '<div class="legend-item" data-category="other" onclick="filterMap(\'other\')" style="display:flex; align-items:center; cursor:pointer; transition: opacity 0.3s;"><i style="background:#e74c3c; width:14px; height:14px; display:inline-block; border-radius:50%; margin-right:8px;"></i> <span data-i18n="leg_other">Destinasi Lainnya</span></div>';
 
             return div;
         };
 
         legend.addTo(map);
+
+        // Re-apply language to the newly added legend
+        setTimeout(() => {
+            const savedLang = localStorage.getItem('preferred_lang') || 'en';
+            setLang(savedLang);
+        }, 100);
