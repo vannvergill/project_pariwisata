@@ -692,3 +692,60 @@
             const savedLang = localStorage.getItem('preferred_lang') || 'en';
             setLang(savedLang);
         }, 100);
+
+        // News Expansion Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Create overlay element
+            const overlay = document.createElement('div');
+            overlay.className = 'news-overlay';
+            document.body.appendChild(overlay);
+
+            const newsLinks = document.querySelectorAll('.news-link');
+            const newsCards = document.querySelectorAll('.news-card');
+
+            // Add close buttons to all news cards
+            newsCards.forEach(card => {
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'news-close-btn';
+                closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                card.appendChild(closeBtn);
+
+                closeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeExpandedNews();
+                });
+            });
+
+            newsLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const card = this.closest('.news-card');
+                    
+                    // Close any currently expanded card
+                    closeExpandedNews();
+                    
+                    // Expand this card
+                    card.classList.add('expanded');
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            overlay.addEventListener('click', closeExpandedNews);
+
+            function closeExpandedNews() {
+                const expandedCard = document.querySelector('.news-card.expanded');
+                if (expandedCard) {
+                    expandedCard.classList.remove('expanded');
+                }
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeExpandedNews();
+                }
+            });
+        });
