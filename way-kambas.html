@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="wk_page_title">Way Kambas National Park — Wildlife Sanctuary</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,300;1,500&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/way-kambas.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo"><i class="fas fa-arrow-left"></i> VISIT LAMPUNG</a>
+        <ul class="nav-links">
+            <li><a href="index.html" data-i18n="wk_nav_home">Home</a></li>
+            <li class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" onclick="setLang('id')">ID</button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle" data-i18n="wk_hero_sub">ASEAN Heritage Park</span>
+            <h1 class="hero-title" data-i18n="wk_hero_title">Way Kambas <em>Sanctuary</em></h1>
+            <p class="hero-desc" data-i18n="wk_hero_desc">Explore one of the oldest reserves in Indonesia, a crucial
+                haven for some of the world's most endangered species.</p>
+        </div>
+        <div class="scroll-indicator">
+            <span data-i18n="scroll_down">Scroll Down</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-num">1,300</div>
+                    <div class="stat-label" data-i18n="stat_area">Sq Km Area</div>
+                </div>
+                <div class="stat-item reveal" style="transition-delay: 0.2s;">
+                    <div class="stat-num">1985</div>
+                    <div class="stat-label" data-i18n="stat_est">Established</div>
+                </div>
+                <div class="stat-item reveal" style="transition-delay: 0.4s;">
+                    <div class="stat-num">50+</div>
+                    <div class="stat-label" data-i18n="stat_species">Mammal Species</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Species Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="wk_sec_tag">The Wildlife</span>
+                <h2 class="section-title" data-i18n="wk_sec_title">Endemic <em>Species</em></h2>
+            </div>
+
+            <p class="overview-text reveal" data-i18n="wk_overview">
+                Spanning over 1,300 square kilometers of swamp and lowland rainforest, Way Kambas National Park provides
+                a critical sanctuary for Sumatra's megafauna. Meet the incredible species that call this park home.
+            </p>
+
+            <div class="species-grid">
+                <!-- Elephant -->
+                <div class="species-card reveal">
+                    <img src="satwa/gajah sumatera.jpg" alt="Sumatran Elephant" loading="lazy">
+                    <span class="status-badge cr" data-i18n="status_cr">Critically Endangered</span>
+                    <div class="species-overlay">
+                        <h3 class="species-name" data-i18n="sp_elephant_name">Sumatran Elephant</h3>
+                        <span class="species-scientific">Elephas maximus sumatranus</span>
+                        <p class="species-desc" data-i18n="sp_elephant_desc">The park is famous for its Elephant
+                            Training Center. These gentle giants are smaller than their mainland cousins and are heavily
+                            protected due to rapid habitat loss.</p>
+                    </div>
+                </div>
+
+                <!-- Rhino -->
+                <div class="species-card reveal" style="transition-delay: 0.1s;">
+                    <img src="satwa/badak sumatera.jpg" alt="Sumatran Rhino" loading="lazy">
+                    <span class="status-badge cr" data-i18n="status_cr">Critically Endangered</span>
+                    <div class="species-overlay">
+                        <h3 class="species-name" data-i18n="sp_rhino_name">Sumatran Rhino</h3>
+                        <span class="species-scientific">Dicerorhinus sumatrensis</span>
+                        <p class="species-desc" data-i18n="sp_rhino_desc">Way Kambas houses the Sumatran Rhino Sanctuary
+                            (SRS), a breeding facility dedicated to saving the smallest and most endangered rhinoceros
+                            species in the world.</p>
+                    </div>
+                </div>
+
+                <!-- Tiger -->
+                <div class="species-card reveal" style="transition-delay: 0.2s;">
+                    <img src="satwa/harimau.jpg" alt="Sumatran Tiger" loading="lazy">
+                    <span class="status-badge cr" data-i18n="status_cr">Critically Endangered</span>
+                    <div class="species-overlay">
+                        <h3 class="species-name" data-i18n="sp_tiger_name">Sumatran Tiger</h3>
+                        <span class="species-scientific">Panthera tigris sumatrae</span>
+                        <p class="species-desc" data-i18n="sp_tiger_desc">Elusive and magnificent, the park's dense
+                            forests offer one of the last remaining strongholds for the only surviving species of island
+                            tigers in Indonesia.</p>
+                    </div>
+                </div>
+
+                <!-- Tapir -->
+                <div class="species-card reveal">
+                    <img src="satwa/tapir.jpg" alt="Malayan Tapir" loading="lazy">
+                    <span class="status-badge en" data-i18n="status_en">Endangered</span>
+                    <div class="species-overlay">
+                        <h3 class="species-name" data-i18n="sp_tapir_name">Malayan Tapir</h3>
+                        <span class="species-scientific">Tapirus indicus</span>
+                        <p class="species-desc" data-i18n="sp_tapir_desc">Easily recognized by their black and white
+                            pattern, these shy herbivores roam the undergrowth of Way Kambas, playing a crucial role in
+                            seed dispersal.</p>
+                    </div>
+                </div>
+
+                <!-- Sun Bear -->
+                <div class="species-card reveal" style="transition-delay: 0.1s;">
+                    <img src="satwa/beruang madu.jpg" alt="Sun Bear" loading="lazy">
+                    <span class="status-badge vu" data-i18n="status_vu">Vulnerable</span>
+                    <div class="species-overlay">
+                        <h3 class="species-name" data-i18n="sp_bear_name">Malayan Sun Bear</h3>
+                        <span class="species-scientific">Helarctos malayanus</span>
+                        <p class="species-desc" data-i18n="sp_bear_desc">The smallest of all bear species, the arboreal
+                            sun bear relies heavily on the dense canopy of the national park to find fruits, honey, and
+                            insects.</p>
+                    </div>
+                </div>
+
+                <!-- Siamang -->
+                <div class="species-card reveal" style="transition-delay: 0.2s;">
+                    <img src="satwa/siamang.jpg" alt="Siamang" loading="lazy">
+                    <span class="status-badge en" data-i18n="status_en">Endangered</span>
+                    <div class="species-overlay">
+                        <h3 class="species-name" data-i18n="sp_siamang_name">Siamang</h3>
+                        <span class="species-scientific">Symphalangus syndactylus</span>
+                        <p class="species-desc" data-i18n="sp_siamang_desc">You can often hear the loud, booming calls
+                            of these tailless, black-furred gibbons echoing through the rainforest canopy during the
+                            early mornings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zones Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="wk_zone_tag">Explore</span>
+                <h2 class="section-title" data-i18n="wk_zone_title">Key <em>Zones</em></h2>
+            </div>
+
+            <div class="dest-card reveal">
+                <div class="dest-img">
+                    <img src="https://images.unsplash.com/photo-1549488344-c6a61f5c6439?q=80&w=1200" alt="Elephant Training Center">
+                </div>
+                <div class="dest-info">
+                    <h3 data-i18n="zone1_title">Elephant Training Center (PLG)</h3>
+                    <p data-i18n="zone1_desc">Established to protect Sumatran Elephants, this center focuses on conservation, training, and mitigating human-elephant conflicts. Visitors can learn about the mahouts and interact responsibly with these gentle giants.</p>
+                    <a href="#" class="btn btn-outline" data-i18n="btn_learn_more">Learn More</a>
+                </div>
+            </div>
+
+            <div class="dest-card reveal">
+                <div class="dest-img">
+                    <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?q=80&w=1200" alt="Sumatran Rhino Sanctuary">
+                </div>
+                <div class="dest-info">
+                    <h3 data-i18n="zone2_title">Sumatran Rhino Sanctuary (SRS)</h3>
+                    <p data-i18n="zone2_desc">A world-renowned facility dedicated to the breeding and intensive conservation of the highly endangered Sumatran Rhino. While restricted to the general public to minimize stress on the rhinos, it serves as the beating heart of rhino survival efforts.</p>
+                    <a href="#" class="btn btn-outline" data-i18n="btn_learn_more">Learn More</a>
+                </div>
+            </div>
+
+            <div class="dest-card reveal">
+                <div class="dest-img">
+                    <img src="https://images.unsplash.com/photo-1518182170546-076616fdcbfe?q=80&w=1200" alt="Jungle Trekking">
+                </div>
+                <div class="dest-info">
+                    <h3 data-i18n="zone3_title">Way Kanan Jungle Trek</h3>
+                    <p data-i18n="zone3_desc">For adventurous souls, the Way Kanan resort area offers pristine jungle trekking and river cruises. It is an excellent spot for birdwatching and spotting elusive primates swinging through the canopy.</p>
+                    <a href="#" class="btn btn-outline" data-i18n="btn_learn_more">Learn More</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem;" class="reveal">
+                <a href="index.html" class="btn" data-i18n="wk_btn_back">Back to Main Map</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h3>VISIT LAMPUNG</h3>
+            <p data-i18n="copy">&copy; 2026 Visit Lampung. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/way-kambas.js"></script>
+</body>
+
+</html>

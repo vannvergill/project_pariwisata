@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">Visit Lampung — The Treasure of Sumatra</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,300;1,500&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">VISIT LAMPUNG</a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#about" data-i18n="nav_about">About</a></li>
+            <li><a href="#experiences" data-i18n="nav_exp">Experiences</a></li>
+            <li><a href="#destinations" data-i18n="nav_dest">Destinations</a></li>
+            <li><a href="#regencies" data-i18n="nav_regencies">Regencies</a></li>
+            <li><a href="#news" data-i18n="nav_news">News</a></li>
+            <li><a href="#map-section" data-i18n="nav_map">Map</a></li>
+            <li><a href="#practical" data-i18n="nav_prac">Practical Info</a></li>
+            <li class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" onclick="setLang('id')">ID</button>
+            </li>
+        </ul>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle" data-i18n="hero_sub">The Treasure of Sumatra</span>
+            <h1 class="hero-title" data-i18n="hero_title">Discover <em>Lampung</em></h1>
+            <p class="hero-desc" data-i18n="hero_desc">A beautiful province at the southern tip of Sumatra, offering
+                breathtaking beaches, majestic wildlife, and rich cultural heritage.</p>
+            <a href="#experiences" class="btn" data-i18n="btn_explore">Explore Now</a>
+        </div>
+        <div class="scroll-indicator">
+            <span data-i18n="scroll">Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" id="about">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-num">15</div>
+                    <div class="stat-label" data-i18n="stat_1">Kabupaten & Kota</div>
+                </div>
+                <div class="stat-item reveal" style="transition-delay: 0.1s;">
+                    <div class="stat-num">2</div>
+                    <div class="stat-label" data-i18n="stat_2">National Parks</div>
+                </div>
+                <div class="stat-item reveal" style="transition-delay: 0.2s;">
+                    <div class="stat-num">100+</div>
+                    <div class="stat-label" data-i18n="stat_3">Beautiful Beaches</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section class="section bg-sand" id="experiences">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="exp_tag">Curated Experiences</span>
+                <h2 class="section-title" data-i18n="exp_title">Embrace the <em>Magic</em></h2>
+            </div>
+            <div class="grid-cards">
+                <div class="exp-card reveal">
+                    <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=800"
+                        alt="Pahawang Island" loading="lazy">
+                    <div class="exp-overlay">
+                        <span class="exp-num">01</span>
+                        <h3 class="exp-title" data-i18n="exp_1_t">Pahawang Island</h3>
+                        <p class="exp-desc" data-i18n="exp_1_d">Dive into crystal clear waters and explore vibrant coral
+                            reefs teeming with exotic marine life in Pahawang.</p>
+                    </div>
+                </div>
+                <div class="exp-card reveal" style="transition-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?q=80&w=800" alt="Way Kambas"
+                        loading="lazy">
+                    <div class="exp-overlay">
+                        <span class="exp-num">02</span>
+                        <h3 class="exp-title" data-i18n="exp_2_t">Way Kambas</h3>
+                        <p class="exp-desc" data-i18n="exp_2_d">Experience the majestic wildlife and meet the gentle
+                            giants at the Way Kambas Elephant Sanctuary.</p>
+                    </div>
+                </div>
+                <div class="exp-card reveal" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=800"
+                        alt="Krui Surfing" loading="lazy">
+                    <div class="exp-overlay">
+                        <span class="exp-num">03</span>
+                        <h3 class="exp-title" data-i18n="exp_3_t">Krui Surfing</h3>
+                        <p class="exp-desc" data-i18n="exp_3_d">Catch the world-class waves at Krui, a hidden paradise
+                            for surfers with pristine coastlines.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="section" id="destinations">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="dest_tag">Top Destinations</span>
+                <h2 class="section-title" data-i18n="dest_title">Explore the <em>Region</em></h2>
+            </div>
+
+            <div class="dest-card reveal">
+                <div class="dest-img">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000"
+                        alt="Pesisir Barat" loading="lazy">
+                </div>
+                <div class="dest-info">
+                    <h3 data-i18n="dest_1_t">Pesisir Barat</h3>
+                    <p data-i18n="dest_1_d">Home to Krui, this coastal regency offers some of the best surfing spots in
+                        the world, stunning sunsets, and pristine white sand beaches. A perfect blend of local culture
+                        and thrilling adventures.</p>
+                    <a href="#" class="btn btn-outline" data-i18n="dest_btn">Discover More</a>
+                </div>
+            </div>
+
+            <div class="dest-card reveal">
+                <div class="dest-img">
+                    <img src="https://images.unsplash.com/photo-1547471080-7fc2caa6f17f?q=80&w=1000"
+                        alt="Way Kambas National Park" loading="lazy">
+                </div>
+                <div class="dest-info">
+                    <h3 data-i18n="dest_2_t">Way Kambas National Park</h3>
+                    <p data-i18n="dest_2_d">A designated ASEAN Heritage Park, renowned for its incredible biodiversity.
+                        Spot Sumatran elephants, rhinos, and tigers in their natural habitat, offering a truly magical
+                        wildlife encounter.</p>
+                    <a href="way-kambas.html" class="btn btn-outline" data-i18n="dest_btn">Discover More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regencies & Cities Section -->
+    <section class="section" id="regencies" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="regency_tag">Explore Every Corner</span>
+                <h2 class="section-title" data-i18n="regency_title">Cities & <em>Regencies</em></h2>
+            </div>
+            
+            <div class="regency-grid">
+                <!-- 15 Regencies -->
+                <a href="regency.html?id=bandar-lampung" class="regency-card reveal">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1542317148-8b4bdccb33ea?q=80&w=400" alt="Bandar Lampung" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Bandar Lampung</div>
+                        <div class="regency-desc">Pusat hiburan modern & kuliner</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=metro" class="regency-card reveal" style="transition-delay: 0.05s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1498084393753-b411b2d26b34?q=80&w=400" alt="Kota Metro" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Kota Metro</div>
+                        <div class="regency-desc">Kota pendidikan yang asri</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=lampung-selatan" class="regency-card reveal" style="transition-delay: 0.1s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=400" alt="Lampung Selatan" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Lampung Selatan</div>
+                        <div class="regency-desc">Pintu gerbang & wisata pantai</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=pesawaran" class="regency-card reveal" style="transition-delay: 0.15s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=400" alt="Pesawaran" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Pesawaran</div>
+                        <div class="regency-desc">Surga wisata bahari eksotis</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=tanggamus" class="regency-card reveal" style="transition-delay: 0.2s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=400" alt="Tanggamus" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Tanggamus</div>
+                        <div class="regency-desc">Lumba-lumba liar & alam dramatis</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=pesisir-barat" class="regency-card reveal" style="transition-delay: 0.25s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=400" alt="Pesisir Barat" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Pesisir Barat</div>
+                        <div class="regency-desc">Kawasan selancar kelas dunia</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=lampung-barat" class="regency-card reveal" style="transition-delay: 0.3s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=400" alt="Lampung Barat" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Lampung Barat</div>
+                        <div class="regency-desc">Pegunungan vulkanik & kopi</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=lampung-timur" class="regency-card reveal" style="transition-delay: 0.35s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?q=80&w=400" alt="Lampung Timur" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Lampung Timur</div>
+                        <div class="regency-desc">Konservasi satwa & prasejarah</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=lampung-tengah" class="regency-card reveal" style="transition-delay: 0.4s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1582215286419-54d19d67566f?q=80&w=400" alt="Lampung Tengah" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Lampung Tengah</div>
+                        <div class="regency-desc">Wisata bendungan & religi</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=lampung-utara" class="regency-card reveal" style="transition-delay: 0.45s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?q=80&w=400" alt="Lampung Utara" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Lampung Utara</div>
+                        <div class="regency-desc">Potensi air terjun tersembunyi</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=way-kanan" class="regency-card reveal" style="transition-delay: 0.5s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1506159904225-b4618e47f96b?q=80&w=400" alt="Way Kanan" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Way Kanan</div>
+                        <div class="regency-desc">Bumi petani & wisata air terjun</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=mesuji" class="regency-card reveal" style="transition-delay: 0.55s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=400" alt="Mesuji" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Mesuji</div>
+                        <div class="regency-desc">Wilayah perairan sungai besar</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=tulang-bawang" class="regency-card reveal" style="transition-delay: 0.6s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1548625361-ec8f1211e227?q=80&w=400" alt="Tulang Bawang" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Tulang Bawang</div>
+                        <div class="regency-desc">Sejarah kerajaan masa lalu</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=tulang-bawang-barat" class="regency-card reveal" style="transition-delay: 0.65s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=400" alt="Tulang Bawang Barat" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Tulang Bawang Barat</div>
+                        <div class="regency-desc">Arsitektur modern & filosofis</div>
+                    </div>
+                </a>
+                <a href="regency.html?id=pringsewu" class="regency-card reveal" style="transition-delay: 0.7s;">
+                    <div class="regency-img-container">
+                        <img src="https://images.unsplash.com/photo-1505934333218-8fe26ff118fb?q=80&w=400" alt="Pringsewu" class="regency-img" loading="lazy">
+                    </div>
+                    <div class="regency-content">
+                        <div class="regency-name">Pringsewu</div>
+                        <div class="regency-desc">Agrowisata kreatif & perbukitan</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="section bg-sand" id="news">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="news_tag">Tourism Updates</span>
+                <h2 class="section-title" data-i18n="news_title">Latest <em>News</em></h2>
+            </div>
+
+            <div class="news-grid">
+                <!-- News Item 1 -->
+                <div class="news-card reveal">
+                    <img src="https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?q=80&w=600" alt="News Image"
+                        class="news-img" loading="lazy">
+                    <div class="news-content">
+                        <span class="news-date">10 July 2026</span>
+                        <h3 class="news-title" data-i18n="news_1_t">Krui Pro 2026 Successfully Wraps Up with
+                            International Surfers</h3>
+                        <p class="news-desc" data-i18n="news_1_d">The annual Krui Pro World Surf League event concluded
+                            with great success, attracting hundreds of top-tier surfers from around the globe to Pesisir
+                            Barat.</p>
+                        <a href="#" class="news-link" data-i18n="read_more">Read More <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- News Item 2 -->
+                <div class="news-card reveal" style="transition-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?q=80&w=600" alt="News Image"
+                        class="news-img" loading="lazy">
+                    <div class="news-content">
+                        <span class="news-date">05 July 2026</span>
+                        <h3 class="news-title" data-i18n="news_2_t">Way Kambas Welcomes a New Baby Elephant</h3>
+                        <p class="news-desc" data-i18n="news_2_d">A joyful moment for conservationists as the Way Kambas
+                            National Park celebrates the birth of a healthy baby Sumatran elephant this week.</p>
+                        <a href="#" class="news-link" data-i18n="read_more">Read More <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- News Item 3 -->
+                <div class="news-card reveal" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=600" alt="News Image"
+                        class="news-img" loading="lazy">
+                    <div class="news-content">
+                        <span class="news-date">28 June 2026</span>
+                        <h3 class="news-title" data-i18n="news_3_t">Pahawang Island Nominated for Sustainable Tourism
+                            Award</h3>
+                        <p class="news-desc" data-i18n="news_3_d">Local communities and the regional government are
+                            working together to preserve coral reefs, earning Pahawang Island a spot in this year's
+                            Sustainable Tourism Awards.</p>
+                        <a href="#" class="news-link" data-i18n="read_more">Read More <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;" class="reveal">
+                <a href="#" class="btn btn-outline" data-i18n="view_all_news">View All News</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section" id="map-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="map_tag">Interactive Map</span>
+                <h2 class="section-title" data-i18n="map_title">Locate Our <em>Treasures</em></h2>
+            </div>
+            <div class="reveal">
+                <div id="map"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container reveal">
+            <h2 class="section-title" data-i18n="cta_title">Your Journey <em>Starts Here</em></h2>
+            <p data-i18n="cta_desc">From thrilling waves to exotic wildlife, Lampung welcomes every kind of traveler to
+                discover its natural wonders.</p>
+            <a href="#" class="btn" data-i18n="btn_plan">Plan Your Visit</a>
+        </div>
+    </section>
+
+    <!-- Practical Info Section -->
+    <section class="section bg-sand" id="practical">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="prac_tag">Before You Go</span>
+                <h2 class="section-title" data-i18n="prac_title">Practical <em>Information</em></h2>
+            </div>
+            <div class="grid-cards">
+                <div class="prac-card reveal">
+                    <div class="prac-icon"><i class="fas fa-plane"></i></div>
+                    <h4 data-i18n="prac_1_t">Transportation</h4>
+                    <p data-i18n="prac_1_d">Easily accessible via Radin Inten II International Airport (TKG) or by ferry
+                        from Merak (Java) to Bakauheni port.</p>
+                </div>
+                <div class="prac-card reveal" style="transition-delay: 0.1s;">
+                    <div class="prac-icon"><i class="fas fa-sun"></i></div>
+                    <h4 data-i18n="prac_2_t">Best Time to Visit</h4>
+                    <p data-i18n="prac_2_d">The dry season from May to September offers the best weather for island
+                        hopping, surfing, and wildlife spotting.</p>
+                </div>
+                <div class="prac-card reveal" style="transition-delay: 0.2s;">
+                    <div class="prac-icon"><i class="fas fa-utensils"></i></div>
+                    <h4 data-i18n="prac_3_t">Culinary</h4>
+                    <p data-i18n="prac_3_d">Don't miss local delicacies like Seruit, Engkak, and the world-famous
+                        Lampung Robusta coffee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>VISIT LAMPUNG</h3>
+                    <p data-i18n="foot_desc">Dinas Pariwisata dan Ekonomi Kreatif Provinsi Lampung is responsible for
+                        promoting Lampung as a top tourism destination.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="foot_disc">Discover</h4>
+                    <ul>
+                        <li><a href="#about" data-i18n="f_about">About Lampung</a></li>
+                        <li><a href="#experiences" data-i18n="f_exp">Experiences</a></li>
+                        <li><a href="#destinations" data-i18n="f_dest">Destinations</a></li>
+                        <li><a href="#" data-i18n="f_culture">Culture & Heritage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="foot_plan">Plan</h4>
+                    <ul>
+                        <li><a href="#" data-i18n="f_req">Travel Requirements</a></li>
+                        <li><a href="#" data-i18n="f_get">Getting Here</a></li>
+                        <li><a href="#" data-i18n="f_acc">Accommodation</a></li>
+                        <li><a href="#" data-i18n="f_faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="foot_contact">Contact</h4>
+                    <ul>
+                        <li><a href="#">info@visitlampung.go.id</a></li>
+                        <li><a href="#">+62 721 123456</a></li>
+                        <li><a href="#">Bandar Lampung,<br>Indonesia</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span data-i18n="copy">&copy; 2026 Visit Lampung. All rights reserved.</span>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
