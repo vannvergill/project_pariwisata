@@ -206,82 +206,107 @@
         };
 
         // JS Logic
-        let currentSlide = 0;
-        let slideCount = 0;
+        const regencyCoords = {
+            "bandar-lampung": [-5.4294, 105.2638],
+            "metro": [-5.1135, 105.3068],
+            "lampung-selatan": [-5.7333, 105.5833],
+            "pesawaran": [-5.4222, 105.1764],
+            "tanggamus": [-5.5000, 104.6667],
+            "pesisir-barat": [-5.1953, 103.9333],
+            "lampung-barat": [-5.0333, 104.0500],
+            "lampung-timur": [-5.1000, 105.6833],
+            "lampung-tengah": [-4.9500, 105.2167],
+            "lampung-utara": [-4.8167, 104.8833],
+            "way-kanan": [-4.4500, 104.5333],
+            "mesuji": [-3.9833, 105.3833],
+            "tulang-bawang": [-4.3833, 105.7833],
+            "tulang-bawang-barat": [-4.4333, 105.0667],
+            "pringsewu": [-5.3500, 104.9833]
+        };
+
+        async function fetchWeather(lat, lng, containerId) {
+            try {
+                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current_weather=true`);
+                const data = await response.json();
+                
+                if (data && data.current_weather) {
+                    const temp = Math.round(data.current_weather.temperature);
+                    const code = data.current_weather.weathercode;
+                    
+                    let icon = 'fa-sun';
+                    let desc = 'Cerah';
+                    
+                    if (code >= 1 && code <= 3) { icon = 'fa-cloud-sun'; desc = 'Cerah Berawan'; }
+                    else if (code >= 45 && code <= 48) { icon = 'fa-smog'; desc = 'Berkabut'; }
+                    else if (code >= 51 && code <= 67) { icon = 'fa-cloud-rain'; desc = 'Hujan Ringan'; }
+                    else if (code >= 71 && code <= 77) { icon = 'fa-snowflake'; desc = 'Salju'; }
+                    else if (code >= 80 && code <= 82) { icon = 'fa-cloud-showers-heavy'; desc = 'Hujan Lebat'; }
+                    else if (code >= 95) { icon = 'fa-bolt'; desc = 'Badai Petir'; }
+
+                    const widget = document.getElementById(containerId);
+                    if (widget) {
+                        widget.innerHTML = `
+                            <div style="display:inline-flex; align-items:center; gap:10px; background:rgba(230, 126, 34, 0.1); padding:8px 16px; border-radius:20px; color:var(--secondary); font-weight:600; margin-bottom:1.5rem; border: 1px solid rgba(230, 126, 34, 0.2);">
+                                <i class="fas ${icon}"></i> 
+                                <span>${temp}°C - ${desc}</span>
+                                <span style="font-size:0.75rem; color:var(--text-muted); margin-left:8px; font-weight:normal;">Real-time</span>
+                            </div>
+                        `;
+                    }
+                }
+            } catch (e) {
+                console.log("Failed to fetch weather", e);
+            }
+        }
 
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
 
-        function renderSlider(images) {
-            const track = document.getElementById('slider-track');
-            const indicatorsContainer = document.getElementById('indicators');
-            track.innerHTML = '';
-            indicatorsContainer.innerHTML = '';
-            
-            if (!images || images.length === 0) return;
-            slideCount = images.length;
-
-            images.forEach((imgUrl, index) => {
-                // Slide
-                const slide = document.createElement('div');
-                slide.className = 'slide';
-                const img = document.createElement('img');
-                img.src = imgUrl;
-                img.loading = index === 0 ? "eager" : "lazy";
-                slide.appendChild(img);
-                track.appendChild(slide);
-
-                // Indicator
-                const dot = document.createElement('div');
-                dot.className = `indicator ${index === 0 ? 'active' : ''}`;
-                dot.onclick = () => goToSlide(index);
-                indicatorsContainer.appendChild(dot);
+        function renderGallery(images) {
+            if (!images || images.length === 0) return '';
+            let html = '<div class="interactive-gallery">';
+            images.forEach((imgUrl, idx) => {
+                html += `
+                    <div class="gallery-item" onclick="openLightbox('${imgUrl}')">
+                        <img src="${imgUrl}" alt="Gallery Image ${idx + 1}" loading="${idx === 0 ? 'eager' : 'lazy'}">
+                        <div class="gallery-overlay"><i class="fas fa-expand-arrows-alt"></i></div>
+                    </div>
+                `;
             });
-
-            // Update indicators on scroll
-            track.addEventListener('scroll', () => {
-                const slideWidth = track.clientWidth;
-                // Avoid divide by zero
-                if(slideWidth > 0) {
-                    const newSlideIndex = Math.round(track.scrollLeft / slideWidth);
-                    if(newSlideIndex !== currentSlide) {
-                        currentSlide = newSlideIndex;
-                        updateIndicators();
-                    }
-                }
-            });
+            html += '</div>';
+            return html;
         }
 
-        function goToSlide(index) {
-            if (index < 0 || index >= slideCount) return;
-            const track = document.getElementById('slider-track');
-            const slideWidth = track.clientWidth;
-            track.scrollTo({ left: slideWidth * index, behavior: 'smooth' });
-        }
-
-        function nextSlide() {
-            if(currentSlide >= slideCount - 1) {
-                goToSlide(0); // loop
-            } else {
-                goToSlide(currentSlide + 1);
+        function openLightbox(url) {
+            let lightbox = document.getElementById('lightbox');
+            if (!lightbox) {
+                lightbox = document.createElement('div');
+                lightbox.id = 'lightbox';
+                lightbox.className = 'lightbox';
+                lightbox.innerHTML = `
+                    <div class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></div>
+                    <img id="lightbox-img" src="" alt="Expanded Image">
+                `;
+                document.body.appendChild(lightbox);
+                
+                // Close on click outside
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) closeLightbox();
+                });
             }
+            document.getElementById('lightbox-img').src = url;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        function prevSlide() {
-            if(currentSlide <= 0) {
-                goToSlide(slideCount - 1); // loop back
-            } else {
-                goToSlide(currentSlide - 1);
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
             }
-        }
-
-        function updateIndicators() {
-            const dots = document.querySelectorAll('.indicator');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
         }
 
         // Initialize
@@ -295,14 +320,15 @@
                 document.getElementById('regency-desc').textContent = data.desc;
                 document.title = data.name + " - Visit Lampung";
 
-                // Setup Slider
-                if(data.images) {
-                    renderSlider(data.images);
+                // Generate Content
+                const dynamicContent = document.getElementById('dynamic-content');
+                let html = '<div id="weather-widget"></div>';
+                
+                if (data.images) {
+                    html += renderGallery(data.images);
                 }
 
-                // Generate Content
-                const contentContainer = document.getElementById('content-container');
-                let html = '<h2>Destinasi Unggulan</h2>';
+                html += '<h2>Destinasi Unggulan</h2>';
                 
                 data.items.forEach(item => {
                     html += `
@@ -319,11 +345,15 @@
                     <div class="item-card" style="border-left-color: #e67e22;">
                         <h3 class="item-title" style="color: #e67e22;"><i class="fas fa-utensils"></i> Pusat Kuliner Lokal</h3>
                         <p class="item-desc">Nikmati berbagai hidangan khas dan temukan rekomendasi UMKM kuliner terbaik di ${data.name}.</p>
-                        <a href="index.html#map" class="btn" style="margin-top: 1rem; font-size: 0.8rem; padding: 0.6rem 1.5rem;">Lihat Peta Kuliner</a>
+                        <a href="index.html#map-section" class="btn" style="margin-top: 1rem; font-size: 0.8rem; padding: 0.6rem 1.5rem;">Lihat Peta Kuliner</a>
                     </div>
                 `;
 
-                contentContainer.innerHTML = html;
+                dynamicContent.innerHTML = html;
+
+                // Fetch real-time weather
+                const coords = regencyCoords[id] || regencyCoords["bandar-lampung"];
+                fetchWeather(coords[0], coords[1], 'weather-widget');
             } else {
                 document.getElementById('regency-name').textContent = "Regency Not Found";
                 document.getElementById('regency-desc').textContent = "Please select a valid destination.";

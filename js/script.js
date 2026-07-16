@@ -290,17 +290,49 @@
             revealOnScroll.observe(el);
         });
 
-        // Horizontal Scroll Loop for Regency Grid
+        // Horizontal Scroll Loop and Interactive Scale for Regency Grid
         const regencyGrid = document.querySelector('.regency-grid');
-        if (regencyGrid) {
+        const regencyCards = document.querySelectorAll('.regency-card');
+        
+        if (regencyGrid && regencyCards.length > 0) {
+            const updateActiveCard = () => {
+                // The active point is near the left side of the grid
+                const gridLeft = regencyGrid.getBoundingClientRect().left + 40; 
+                
+                let closestCard = null;
+                let closestDistance = Infinity;
+
+                regencyCards.forEach(card => {
+                    const cardLeft = card.getBoundingClientRect().left;
+                    const distance = Math.abs(cardLeft - gridLeft);
+                    
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestCard = card;
+                    }
+                });
+
+                if (closestCard && !closestCard.classList.contains('active-scroll')) {
+                    regencyCards.forEach(card => card.classList.remove('active-scroll'));
+                    closestCard.classList.add('active-scroll');
+                }
+            };
+
+            let isScrolling;
             regencyGrid.addEventListener('scroll', () => {
-                // Check if scroll reached the very end (with a 2px margin of error for different screen scaling)
+                window.cancelAnimationFrame(isScrolling);
+                isScrolling = window.requestAnimationFrame(updateActiveCard);
+                
+                // Check if scroll reached the very end
                 if (regencyGrid.scrollLeft + regencyGrid.clientWidth >= regencyGrid.scrollWidth - 2) {
                     setTimeout(() => {
                         regencyGrid.scrollTo({ left: 0, behavior: 'smooth' });
-                    }, 400); // Small delay to let the user see the last item before snapping back
+                    }, 400); 
                 }
             });
+
+            // Initialize active card after slight delay to ensure layout is done
+            setTimeout(updateActiveCard, 150);
         }
 
 // Map Bounds for Lampung Province
