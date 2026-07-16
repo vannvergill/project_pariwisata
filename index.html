@@ -25,6 +25,24 @@
 
 <body>
 
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-inner">
+            <div class="splash-logo">VISIT <span>LAMPUNG</span></div>
+            <div class="splash-tagline">The Treasure of Sumatra</div>
+            <div class="splash-loader">
+                <div class="splash-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <a href="#" class="logo">VISIT LAMPUNG</a>
@@ -37,8 +55,17 @@
             <li><a href="#map-section" data-i18n="nav_map">Map</a></li>
             <li><a href="#practical" data-i18n="nav_prac">Practical Info</a></li>
             <li class="lang-switch">
-                <button class="lang-btn active" onclick="setLang('en')">EN</button>
-                <button class="lang-btn" onclick="setLang('id')">ID</button>
+                <div class="lang-dropdown" id="lang-dropdown">
+                    <button class="lang-selected" id="lang-selected" onclick="toggleLangDropdown()">
+                        <span id="lang-flag">🇬🇧</span> EN <i class="fas fa-chevron-down" style="font-size:0.6rem;"></i>
+                    </button>
+                    <ul class="lang-options" id="lang-options">
+                        <li onclick="setLang('en'); closeLangDropdown();">🇬🇧 EN — English</li>
+                        <li onclick="setLang('id'); closeLangDropdown();">🇮🇩 ID — Indonesia</li>
+                        <li onclick="setLang('zh'); closeLangDropdown();">🇨🇳 ZH — 中文</li>
+                        <li onclick="setLang('pt'); closeLangDropdown();">🇧🇷 PT — Português</li>
+                    </ul>
+                </div>
             </li>
         </ul>
         <div class="menu-toggle" id="menu-toggle">
@@ -163,6 +190,37 @@
             </div>
         </div>
     </section>
+
+    <!-- Video / Cinematic Section -->
+    <section class="video-section" id="video-lampung">
+        <div class="video-section-overlay"></div>
+        <div class="video-section-content reveal">
+            <span class="section-tag" style="color: rgba(255,255,255,0.75);">Cinematic Lampung</span>
+            <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,5vw,4rem); color:white; font-weight:300; margin-bottom:1.5rem; line-height:1.1;">
+                Experience the <em>Beauty</em>
+            </h2>
+            <p style="color:rgba(255,255,255,0.8); max-width:560px; margin:0 auto 2rem; font-size:1rem; line-height:1.8;">Saksikan keindahan alam Lampung yang memukau — dari sabana Way Kambas hingga hamparan laut biru Pahawang — dalam satu tayangan sinematik.</p>
+            <button class="btn" id="play-video-btn" onclick="openVideoModal()">
+                <i class="fas fa-play" style="margin-right:8px;"></i> Tonton Video
+            </button>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal">
+        <div class="video-modal-inner">
+            <button class="video-modal-close" onclick="closeVideoModal()"><i class="fas fa-times"></i></button>
+            <div class="video-responsive">
+                <iframe id="yt-iframe"
+                    src=""
+                    title="Visit Lampung Video"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media; fullscreen"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- Regencies & Cities Section -->
     <section class="section" id="regencies" style="padding-top: 0;">
@@ -492,6 +550,16 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- WhatsApp Floating Button -->
+    <a id="whatsapp-btn"
+       href="https://wa.me/6282282019956?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20wisata%20Lampung"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Chat via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>

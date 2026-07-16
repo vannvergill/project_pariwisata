@@ -1,4 +1,47 @@
+// =============================================
+// PRIORITY FEATURES: Splash, Video Modal, WhatsApp
+// =============================================
+
+// 1. Splash Screen — Hide after loading completes
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        if (splash) splash.classList.add('hidden');
+    }, 1800);
+});
+
+// 2. Video Modal
+const YT_VIDEO_ID = 'r74d4M-XDHU'; // Lampung Tourism video
+
+function openVideoModal() {
+    const modal = document.getElementById('video-modal');
+    const iframe = document.getElementById('yt-iframe');
+    if (!modal || !iframe) return;
+    iframe.src = `https://www.youtube.com/embed/${YT_VIDEO_ID}?autoplay=1&rel=0`;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+    const modal = document.getElementById('video-modal');
+    const iframe = document.getElementById('yt-iframe');
+    if (!modal) return;
+    modal.classList.remove('open');
+    if (iframe) iframe.src = '';
+    document.body.style.overflow = '';
+}
+
+// Close video modal on backdrop click or Escape
+document.addEventListener('click', (e) => {
+    if (e.target.id === 'video-modal') closeVideoModal();
+});
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeVideoModal();
+});
+
+// =============================================
 // Language Dictionary
+
         const i18n = {
             en: {
                 page_title: "Visit Lampung — The Treasure of Sumatra",
@@ -218,6 +261,126 @@
             }
         };
 
+        // Language metadata for dropdown label
+        const langMeta = {
+            en: { flag: '🇬🇧', label: 'EN' },
+            id: { flag: '🇮🇩', label: 'ID' },
+            zh: { flag: '🇨🇳', label: 'ZH' },
+            pt: { flag: '🇧🇷', label: 'PT' }
+        };
+
+        // i18n Mandarin (ZH)
+        i18n.zh = {
+            page_title: "游览楠榜 — 苏门答腊的宝藏",
+            nav_about: "关于", nav_exp: "体验", nav_dest: "目的地",
+            nav_news: "新闻", nav_map: "地图", nav_prac: "实用信息",
+            hero_sub: "苏门答腊的宝藏",
+            hero_title: "探索 <em>楠榜</em>",
+            hero_desc: "楠榜是苏门答腊岛南端的美丽省份，拥有令人叹为观止的海滩、壮观的野生动物和丰富的文化遗产。",
+            btn_explore: "立即探索",
+            stat_1: "县市", stat_2: "国家公园", stat_3: "美丽海滩",
+            exp_tag: "精选体验", exp_title: "感受<em>魔力</em>",
+            exp_1_t: "帕哈旺岛", exp_1_d: "在清澈见底的海水中潜水，探索帕哈旺岛充满异域海洋生物的珊瑚礁。",
+            exp_2_t: "Way Kambas", exp_2_d: "在Way Kambas大象保护区体验壮观的野生动物，与温柔的巨兽邂逅。",
+            exp_3_t: "克鲁伊冲浪", exp_3_d: "在克鲁伊征服世界级的海浪，这是一个拥有原始海岸线的冲浪者隐秘天堂。",
+            dest_tag: "热门目的地", dest_title: "探索<em>地区</em>",
+            dest_btn: "了解更多",
+            dest_1_t: "西海岸", dest_1_d: "克鲁伊的所在地，拥有世界上最佳冲浪点、绝美日落和原始白沙滩，是当地文化与刺激冒险的完美融合。",
+            dest_2_t: "Way Kambas国家公园", dest_2_d: "东盟遗产公园，以其惊人的生物多样性闻名。在自然栖息地中观察苏门答腊象、犀牛和老虎。",
+            news_tag: "旅游动态", news_title: "最新<em>新闻</em>",
+            news_1_t: "克鲁伊职业赛2026圆满落幕", news_1_d: "年度克鲁伊职业世界冲浪联赛活动取得巨大成功，吸引了数百名来自全球的顶尖冲浪手。",
+            news_2_t: "Way Kambas迎来小象宝宝诞生", news_2_d: "本周，Way Kambas国家公园为保育人士带来了一个喜讯，一头健康的苏门答腊小象降生。",
+            news_3_t: "帕哈旺岛获可持续旅游奖提名", news_3_d: "当地社区和政府携手保护珊瑚礁，使帕哈旺岛入围今年的可持续旅游奖。",
+            read_more: "阅读更多 <i class='fas fa-arrow-right'></i>", view_all_news: "查看所有新闻",
+            map_tag: "互动地图", map_title: "发现我们的<em>宝藏</em>",
+            cta_title: "您的旅程<em>从这里开始</em>",
+            cta_desc: "从惊涛骇浪到异域野生动物，楠榜欢迎每一位旅行者探索其自然奇观。",
+            btn_plan: "规划您的行程",
+            prac_tag: "出发前", prac_title: "实用<em>信息</em>",
+            prac_1_t: "交通", prac_1_d: "可通过拉丁英坦二世国际机场(TKG)或从梅拉克乘渡轮前往巴考黑尼港口轻松抵达。",
+            prac_2_t: "最佳旅游时间", prac_2_d: "五月至九月的旱季是跳岛、冲浪和观赏野生动物的最佳时间。",
+            prac_3_t: "美食", prac_3_d: "不要错过当地特色美食如Seruit、Engkak，以及世界闻名的楠榜罗布斯塔咖啡。",
+            foot_desc: "楠榜省旅游和创意经济局负责将楠榜推广为顶级旅游目的地。",
+            foot_disc: "探索", foot_plan: "计划", foot_contact: "联系",
+            f_about: "关于楠榜", f_exp: "体验", f_dest: "目的地", f_culture: "文化与遗产",
+            f_req: "旅行要求", f_get: "如何到达", f_acc: "住宿", f_faq: "常见问题",
+            copy: "&copy; 2026 游览楠榜。版权所有。", scroll: "滚动",
+            reg_1_n: "班达楠榜市", reg_1_d: "现代娱乐与美食中心",
+            reg_2_n: "梅特罗市", reg_2_d: "宜人的教育之城",
+            reg_3_n: "南楠榜县", reg_3_d: "门户与海滩旅游",
+            reg_4_n: "珀萨瓦兰县", reg_4_d: "异域海洋旅游天堂",
+            reg_5_n: "当加默斯县", reg_5_d: "野生海豚与壮观自然",
+            reg_6_n: "西海岸县", reg_6_d: "世界级冲浪区",
+            reg_7_n: "西楠榜县", reg_7_d: "火山山脉与咖啡",
+            reg_8_n: "东楠榜县", reg_8_d: "野生动物保护与史前",
+            reg_9_n: "中楠榜县", reg_9_d: "水坝与宗教旅游",
+            reg_10_n: "北楠榜县", reg_10_d: "隐秘瀑布潜力",
+            reg_11_n: "Way Kanan县", reg_11_d: "农业与瀑布旅游",
+            reg_12_n: "麦苏吉县", reg_12_d: "大河水域地区",
+            reg_13_n: "图朗巴旺县", reg_13_d: "古代王国历史",
+            reg_14_n: "西图朗巴旺县", reg_14_d: "现代与哲学建筑",
+            reg_15_n: "普林塞武县", reg_15_d: "创意农业旅游与丘陵",
+            leg_title: "图例", leg_sub: "(点击筛选)",
+            leg_beach: "海滩与岛屿", leg_mount: "山脉", leg_umkm: "中小企业/美食", leg_coffee: "咖啡馆", leg_other: "其他目的地",
+            news_1_date: "2026年7月10日", news_2_date: "2026年7月5日", news_3_date: "2026年6月28日"
+        };
+
+        // i18n Portuguese (PT)
+        i18n.pt = {
+            page_title: "Visite Lampung — O Tesouro de Sumatra",
+            nav_about: "Sobre", nav_exp: "Experiências", nav_dest: "Destinos",
+            nav_news: "Notícias", nav_map: "Mapa", nav_prac: "Informações Práticas",
+            hero_sub: "O Tesouro de Sumatra",
+            hero_title: "Descubra <em>Lampung</em>",
+            hero_desc: "Uma bela província na ponta sul de Sumatra, oferecendo praias deslumbrantes, fauna majestosa e rico patrimônio cultural.",
+            btn_explore: "Explorar Agora",
+            stat_1: "Municípios e Cidades", stat_2: "Parques Nacionais", stat_3: "Praias Bonitas",
+            exp_tag: "Experiências Selecionadas", exp_title: "Viva a <em>Magia</em>",
+            exp_1_t: "Ilha Pahawang", exp_1_d: "Mergulhe em águas cristalinas e explore vibrantes recifes de coral repletos de vida marinha exótica em Pahawang.",
+            exp_2_t: "Way Kambas", exp_2_d: "Experimente a majestosa vida selvagem e conheça os gentis gigantes no Santuário de Elefantes Way Kambas.",
+            exp_3_t: "Surf em Krui", exp_3_d: "Conquiste as ondas de classe mundial em Krui, um paraíso escondido para surfistas com litoral intocado.",
+            dest_tag: "Principais Destinos", dest_title: "Explore a <em>Região</em>",
+            dest_btn: "Descobrir Mais",
+            dest_1_t: "Pesisir Barat", dest_1_d: "Lar de Krui, este município costeiro oferece alguns dos melhores pontos de surf do mundo, pôr do sol deslumbrante e praias de areia branca virgem.",
+            dest_2_t: "Parque Nacional Way Kambas", dest_2_d: "Um Parque do Patrimônio da ASEAN, famoso pela sua incrível biodiversidade. Aviste elefantes, rinocerontes e tigres de Sumatra em seu habitat natural.",
+            news_tag: "Atualizações de Turismo", news_title: "Últimas <em>Notícias</em>",
+            news_1_t: "Krui Pro 2026 Encerra com Surfistas Internacionais", news_1_d: "O evento anual da World Surf League em Krui terminou com grande sucesso, atraindo centenas de surfistas de todo o mundo para Pesisir Barat.",
+            news_2_t: "Way Kambas Recebe um Novo Filhote de Elefante", news_2_d: "Um momento de alegria para os conservacionistas, com o nascimento de um filhote saudável de elefante sumatrano nesta semana.",
+            news_3_t: "Ilha Pahawang Indicada ao Prêmio de Turismo Sustentável", news_3_d: "Comunidades locais e o governo regional trabalham juntos para preservar os recifes de coral.",
+            read_more: "Leia Mais <i class='fas fa-arrow-right'></i>", view_all_news: "Ver Todas as Notícias",
+            map_tag: "Mapa Interativo", map_title: "Localize os Nossos <em>Tesouros</em>",
+            cta_title: "Sua Jornada <em>Começa Aqui</em>",
+            cta_desc: "De ondas emocionantes à vida selvagem exótica, Lampung acolhe todo tipo de viajante para descobrir suas maravilhas naturais.",
+            btn_plan: "Planeje sua Visita",
+            prac_tag: "Antes de Partir", prac_title: "Informações <em>Práticas</em>",
+            prac_1_t: "Transporte", prac_1_d: "Facilmente acessível pelo Aeroporto Internacional Radin Inten II (TKG) ou de balsa de Merak (Java) ao porto de Bakauheni.",
+            prac_2_t: "Melhor Época para Visitar", prac_2_d: "A estação seca, de maio a setembro, oferece o melhor clima para exploração de ilhas, surf e observação de fauna.",
+            prac_3_t: "Gastronomia", prac_3_d: "Não perca as iguarias locais como Seruit, Engkak e o famoso café Robusta de Lampung.",
+            foot_desc: "A Dinas Pariwisata Provinsi Lampung é responsável por promover Lampung como um dos principais destinos turísticos.",
+            foot_disc: "Explorar", foot_plan: "Planejar", foot_contact: "Contato",
+            f_about: "Sobre Lampung", f_exp: "Experiências", f_dest: "Destinos", f_culture: "Cultura e Patrimônio",
+            f_req: "Requisitos de Viagem", f_get: "Como Chegar", f_acc: "Acomodação", f_faq: "Perguntas Frequentes",
+            copy: "&copy; 2026 Visit Lampung. Todos os direitos reservados.", scroll: "Rolar",
+            reg_1_n: "Bandar Lampung", reg_1_d: "Centro de entretenimento moderno e gastronomia",
+            reg_2_n: "Cidade de Metro", reg_2_d: "Bela cidade universitária",
+            reg_3_n: "Lampung do Sul", reg_3_d: "Portal e turismo de praia",
+            reg_4_n: "Pesawaran", reg_4_d: "Paraíso de turismo marinho exótico",
+            reg_5_n: "Tanggamus", reg_5_d: "Golfinhos selvagens e natureza dramática",
+            reg_6_n: "Pesisir Barat", reg_6_d: "Área de surf de classe mundial",
+            reg_7_n: "Lampung Ocidental", reg_7_d: "Montanhas vulcânicas e café",
+            reg_8_n: "Lampung Oriental", reg_8_d: "Conservação de animais e pré-história",
+            reg_9_n: "Lampung Central", reg_9_d: "Turismo de barragem e religioso",
+            reg_10_n: "Lampung do Norte", reg_10_d: "Potencial de cachoeiras escondidas",
+            reg_11_n: "Way Kanan", reg_11_d: "Terra de agricultores e turismo de cachoeiras",
+            reg_12_n: "Mesuji", reg_12_d: "Área de grandes rios",
+            reg_13_n: "Tulang Bawang", reg_13_d: "História de reinos antigos",
+            reg_14_n: "Tulang Bawang Barat", reg_14_d: "Arquitetura moderna e filosófica",
+            reg_15_n: "Pringsewu", reg_15_d: "Agroturismo criativo e colinas",
+            leg_title: "Legenda", leg_sub: "(Clique para filtrar)",
+            leg_beach: "Praias e Ilhas", leg_mount: "Montanhas", leg_umkm: "PME / Gastronomia", leg_coffee: "Cafeteria", leg_other: "Outros Destinos",
+            news_1_date: "10 Julho 2026", news_2_date: "05 Julho 2026", news_3_date: "28 Junho 2026"
+        };
+
         function setLang(lang) {
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -226,15 +389,43 @@
                 }
             });
 
-            // Update active button state
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+            // Update dropdown label
+            const meta = langMeta[lang] || langMeta.en;
+            const flagEl = document.getElementById('lang-flag');
+            const selectedEl = document.getElementById('lang-selected');
+            if (flagEl) flagEl.textContent = meta.flag;
+            if (selectedEl) {
+                selectedEl.childNodes[1].textContent = ' ' + meta.label + ' ';
+            }
 
-            // Save preference to localStorage
+            // Highlight active option
+            document.querySelectorAll('.lang-options li').forEach(li => {
+                li.classList.remove('active-lang');
+                if (li.getAttribute('onclick') && li.getAttribute('onclick').includes(`'${lang}'`)) {
+                    li.classList.add('active-lang');
+                }
+            });
+
             localStorage.setItem('preferred_lang', lang);
         }
+
+        function toggleLangDropdown() {
+            document.getElementById('lang-options').classList.toggle('open');
+        }
+
+        function closeLangDropdown() {
+            document.getElementById('lang-options').classList.remove('open');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('lang-dropdown');
+            if (dropdown && !dropdown.contains(e.target)) {
+                closeLangDropdown();
+            }
+        });
+
+
 
         // Initialize language from localStorage or default to EN
         document.addEventListener('DOMContentLoaded', () => {
@@ -251,6 +442,131 @@
                 navbar.classList.remove('scrolled');
             }
         });
+
+        // =============================================
+        // INTERACTIVE FEATURES
+        // =============================================
+
+        // 1. Reading Progress Bar
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                progressBar.style.width = progress + '%';
+            }, { passive: true });
+        }
+
+        // 2. Custom Cursor
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorRing = document.getElementById('cursor-ring');
+        if (cursorDot && cursorRing) {
+            let ringX = 0, ringY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+                
+                // Ring follows with smooth delay using requestAnimationFrame
+                ringX += (e.clientX - ringX) * 0.12;
+                ringY += (e.clientY - ringY) * 0.12;
+                cursorRing.style.left = e.clientX + 'px';
+                cursorRing.style.top = e.clientY + 'px';
+            });
+
+            // Expand ring on hoverable elements
+            const hoverables = document.querySelectorAll('a, button, .regency-card, .exp-card, .dest-card, .gallery-item, .legend-item');
+            hoverables.forEach(el => {
+                el.addEventListener('mouseenter', () => cursorRing.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => cursorRing.classList.remove('cursor-hover'));
+            });
+
+            document.addEventListener('mouseleave', () => {
+                cursorDot.style.opacity = '0';
+                cursorRing.style.opacity = '0';
+            });
+            document.addEventListener('mouseenter', () => {
+                cursorDot.style.opacity = '1';
+                cursorRing.style.opacity = '1';
+            });
+        }
+
+        // 3. Back to Top Button
+        const backToTop = document.getElementById('back-to-top');
+        if (backToTop) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            }, { passive: true });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // 4. Animated Number Counter for Stats
+        const animateCounter = (el, target, suffix = '') => {
+            const duration = 2000;
+            const start = performance.now();
+            const update = (currentTime) => {
+                const elapsed = currentTime - start;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease out cubic
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(eased * target) + suffix;
+                if (progress < 1) requestAnimationFrame(update);
+            };
+            requestAnimationFrame(update);
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.counted) {
+                    entry.target.dataset.counted = 'true';
+                    const el = entry.target;
+                    const text = el.textContent.trim();
+                    const num = parseInt(text.replace(/\D/g, ''), 10);
+                    const suffix = text.includes('+') ? '+' : '';
+                    if (!isNaN(num)) animateCounter(el, num, suffix);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-num').forEach(el => counterObserver.observe(el));
+
+        // 5. 3D Card Tilt Effect for Experience Cards
+        document.querySelectorAll('.exp-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -8;
+                const rotateY = ((x - centerX) / centerX) * 8;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+                card.style.transition = 'transform 0.1s ease';
+
+                // Inner image parallax
+                const img = card.querySelector('img');
+                if (img) {
+                    img.style.transform = `scale(1.05) translate(${(x - centerX) * 0.02}px, ${(y - centerY) * 0.02}px)`;
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                card.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                const img = card.querySelector('img');
+                if (img) img.style.transform = '';
+            });
+        });
+
+
 
         // Mobile Menu Toggle
         const menuToggle = document.getElementById('menu-toggle');
